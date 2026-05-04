@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Yesteryear&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-signature: "Yesteryear", cursive;
+}
+
+/* Font Size Scaling */
+html.text-normal { font-size: 16px; }
+html.text-large { font-size: 18px; }
+html.text-xlarge { font-size: 20px; }
+
+/* Line Spacing Overrides */
+html.spacing-normal p, html.spacing-normal li, html.spacing-normal span { line-height: 1.5 !important; }
+html.spacing-relaxed p, html.spacing-relaxed li, html.spacing-relaxed span { line-height: 1.75 !important; }
+html.spacing-loose p, html.spacing-loose li, html.spacing-loose span { line-height: 2.0 !important; }
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* High Contrast Mode */
+.high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast main,
+.high-contrast nav,
+.high-contrast section,
+.high-contrast div.bg-white,
+.high-contrast div.bg-slate-800,
+.high-contrast div.bg-slate-900,
+.high-contrast div.bg-indigo-50,
+.high-contrast span.bg-slate-100 {
+  background-color: #000000 !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast p,
+.high-contrast span,
+.high-contrast li {
+  color: #ffffff !important;
+}
+
+.high-contrast a,
+.high-contrast button,
+.high-contrast svg {
+  color: #ffff00 !important;
+}
+
+.high-contrast button {
+  border-color: #ffff00 !important;
+}
+
+.high-contrast .text-emerald-500,
+.high-contrast .text-indigo-500,
+.high-contrast .text-indigo-600,
+.high-contrast .text-amber-500 {
+  color: #ffff00 !important;
+}
+
+.high-contrast input {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+.high-contrast input::placeholder {
+  color: #cccccc !important;
+}
+
+.high-contrast .opacity-40 {
+  opacity: 0.4 !important;
+}
+
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  nav {
+    display: none !important;
+  }
+  
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  section {
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+    page-break-inside: avoid;
+    margin-bottom: 2rem !important;
+  }
+  
+  .shadow-sm {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  
+  footer {
+    display: none !important;
+  }
+}
