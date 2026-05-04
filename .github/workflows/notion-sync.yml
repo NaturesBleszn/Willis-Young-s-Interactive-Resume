@@ -1,0 +1,29 @@
+name: Sync to Notion
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Daily at 8 AM CST (14:00 UTC)
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  notion-sync:
+    name: Sync GitHub Data to Notion
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Notion Sync
+        run: node scripts/notion-sync.js
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
